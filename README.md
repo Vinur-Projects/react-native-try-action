@@ -83,7 +83,7 @@ configureErrorHandle({
 
 ## API
 
-### `configureErrorHandle(options: InteractionOptions)`
+### `configureErrorHandle(options: ActionOptionsI)`
 
 Sets default error handling configurations.
 
@@ -96,25 +96,25 @@ Sets default error handling configurations.
 | `AlertDefaultButtonText` | `string`                                | Default alert button text. Default: `"Ok"`.                      |
 | `AlertButtonOnPress`     | `() => void`                            | Default button press action.                                     |
 
-### `tryAction<T>(interaction: () => T, options?: InteractionOptions)`
+### `tryAction<T>(interaction: () => T, options?: ActionOptionsI)`
 
 Executes a synchronous function safely.
 
-| Parameter     | Type                 | Description             |
-| ------------- | -------------------- | ----------------------- |
-| `interaction` | `() => T`            | Function to execute.    |
-| `options`     | `InteractionOptions` | Optional configuration. |
+| Parameter     | Type             | Description             |
+| ------------- | ---------------- | ----------------------- |
+| `interaction` | `() => T`        | Function to execute.    |
+| `options`     | `ActionOptionsI` | Optional configuration. |
 
 Returns: `{ done: boolean; data?: T; message?: string }`
 
-### `tryActionAsync<T>(interaction: () => Promise<T>, options?: InteractionOptions)`
+### `tryActionAsync<T>(interaction: () => Promise<T>, options?: ActionOptionsI)`
 
 Executes an asynchronous function safely.
 
-| Parameter     | Type                 | Description                |
-| ------------- | -------------------- | -------------------------- |
-| `interaction` | `() => Promise<T>`   | Async function to execute. |
-| `options`     | `InteractionOptions` | Optional configuration.    |
+| Parameter     | Type               | Description                |
+| ------------- | ------------------ | -------------------------- |
+| `interaction` | `() => Promise<T>` | Async function to execute. |
+| `options`     | `ActionOptionsI`   | Optional configuration.    |
 
 Returns: `Promise<{ done: boolean; data?: T; message?: string }>`
 

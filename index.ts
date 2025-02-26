@@ -1,22 +1,7 @@
-import React from "react";
 import { Alert } from "react-native";
+import { ActionOptionsI } from "./types";
 
-interface AlertButton {
-  text: string;
-  onPress: () => void;
-}
-
-interface InteractionOptions {
-  showAlertWhileError?: boolean;
-  customAlertComponent?: ((message?: string, options?: InteractionOptions) => React.ReactNode) | null;
-  AlertTitle?: string;
-  AlertMessage?: string;
-  AlertButtons?: AlertButton[] | null;
-  AlertDefaultButtonText?: string;
-  AlertButtonOnPress?: () => void;
-}
-
-let defaultState: InteractionOptions = {
+let defaultState: ActionOptionsI = {
   showAlertWhileError: false,
   customAlertComponent: null,
   AlertTitle: "",
@@ -26,7 +11,7 @@ let defaultState: InteractionOptions = {
   AlertButtonOnPress: () => {},
 };
 
-const configureErrorHandle = (props: InteractionOptions) => {
+const configureErrorHandle = (props: ActionOptionsI) => {
   defaultState = {
     ...defaultState,
     ...props,
@@ -34,7 +19,7 @@ const configureErrorHandle = (props: InteractionOptions) => {
 };
 
 // Helper function to handle errors and optionally show an alert
-const handleError = (error: unknown, options?: InteractionOptions) => {
+const handleError = (error: unknown, options?: ActionOptionsI) => {
   const message = (() => {
     if (error instanceof Error) {
       return error.message;
@@ -74,7 +59,7 @@ const handleError = (error: unknown, options?: InteractionOptions) => {
 // Function for synchronous operations
 const tryAction = <T>(
   interaction: () => T,
-  options?: InteractionOptions
+  options?: ActionOptionsI
 ): { done: boolean; data?: T; message?: string } => {
   try {
     const result = interaction();
@@ -88,7 +73,7 @@ const tryAction = <T>(
 // Function for asynchronous operations
 const tryActionAsync = async <T>(
   interaction: () => Promise<T>,
-  options?: InteractionOptions
+  options?: ActionOptionsI
 ): Promise<{ done: boolean; data?: T; message?: string }> => {
   try {
     const result = await interaction();
