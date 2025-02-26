@@ -1,0 +1,21 @@
+{
+  "name": "react-native-try-action",
+  "version": "0.0.1",
+  "description": "handle errors dynamically",
+  "author": "TsHs-0",
+  "license": "MIT",
+  "repository": "TsHs-0/react-native-try-action",
+  "scripts": {},
+  "keywords": [],
+  "devDependencies": {
+    "expo-yarn-workspaces": "^1.2.1"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-native": "^0.74.5"
+  }
+}
